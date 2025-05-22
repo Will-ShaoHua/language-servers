@@ -149,10 +149,15 @@ export class LocalProjectContextController {
             }
 
             // initialize vecLib and index if needed
-            const libraryPath = this.getVectorLibraryPath()
+            const libraryPath =
+                '/Volumes/workplace/ide/aws-toolkit-jetbrains/plugins/amazonq/build/USER_HOME/Library/Caches/aws/toolkits/language-servers/AmazonQ-JetBrains-temp/1.3.0/indexing/dist/extension.js'
             const vecLib = vectorLib ?? (await eval(`import("${libraryPath}")`))
             if (vecLib) {
-                this._vecLib = await vecLib.start(LIBRARY_DIR, this.clientName, this.indexCacheDirPath)
+                this._vecLib = await vecLib.start(
+                    '/Volumes/workplace/ide/aws-toolkit-jetbrains/plugins/amazonq/build/USER_HOME/Library/Caches/aws/toolkits/language-servers/AmazonQ-JetBrains-temp/1.3.0/indexing/dist/extension.js',
+                    this.clientName,
+                    this.indexCacheDirPath
+                )
                 if (enableIndexing) {
                     void this.buildIndex()
                 }
